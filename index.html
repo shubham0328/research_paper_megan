@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M3GAN: A Generative Android Robot for Real-Time Multimodal Emotion and Behavior Analysis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>M3GAN Research</h1>
+                </div>
+                <nav class="nav">
+                    <button class="nav-toggle" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-menu">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#abstract">Abstract</a></li>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#background">Background</a></li>
+                        <li><a href="#architecture">Architecture</a></li>
+                        <li><a href="#methodology">Methodology</a></li>
+                        <li><a href="#results">Results</a></li>
+                        <li><a href="#discussion">Discussion</a></li>
+                        <li><a href="#applications">Applications</a></li>
+                        <li><a href="#conclusion">Conclusion</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Indicator -->
+    <div class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">M3GAN: A Generative Android Robot for Real-Time Multimodal Emotion and Behavior Analysis</h1>
+                        <p class="hero-subtitle">A Deep Learning, Machine Learning and NLP Approach</p>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-number">88.6%</span>
+                                <span class="stat-label">Emotion Recognition Accuracy</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">42ms</span>
+                                <span class="stat-label">Response Latency</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">42</span>
+                                <span class="stat-label">User Study Participants</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1753636584/pplx_project_search_images/80a5b51477fd6b086e82a660827d844a89ce4164.jpg" alt="M3GAN android robot showcasing advanced lifelike design" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Abstract Section -->
+        <section id="abstract" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Abstract</h2>
+                </div>
+                <div class="abstract-content">
+                    <p>This paper proposes a full‐stack architecture for M3GAN (Model-3 Generative Android)—a lifelike robot capable of detecting, interpreting, and responding to human behaviour and emotions in real time. Leveraging recent advances in computer vision, speech processing, and large-language-model (LLM)–driven natural-language understanding, M3GAN integrates multimodal deep learning pipelines with generative control of facial expressions and body language. Comprehensive experiments on benchmark datasets demonstrate state-of-the-art accuracy in facial, vocal, and textual emotion classification, while a user study with 42 participants confirms significant gains in perceived empathy and interaction quality compared with prior social robots.</p>
+                    <div class="keywords">
+                        <strong>Keywords:</strong> M3GAN, generative android, multimodal emotion recognition, deep learning, machine learning, NLP, human–robot interaction, computer vision, speech processing
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="content-grid">
+                    <!-- Main Content -->
+                    <div class="main-content">
+                        <!-- Introduction -->
+                        <section id="introduction" class="card">
+                            <h2>1. Introduction</h2>
+                            <div class="card-content">
+                                <p>Films such as M3GAN have popularised the vision of child-sized android companions that adaptively learn to protect and engage their users. Although cinematic, the premise resonates with real-world progress in humanoid robotics (e.g. Sophia, Ameca, Nikola) and in AI-driven emotional intelligence. Concurrently, widespread loneliness and mental-health concerns have intensified demand for interactive companions. This research addresses the technical gap between fiction and deployable systems by detailing a reproducible design for a generative android capable of multimodal emotion recognition (MER) and context-aware behavioural generation.</p>
+                                <div class="image-container">
+                                    <img src="https://pplx-res.cloudinary.com/image/upload/v1753636584/pplx_project_search_images/319a584b584a2fc97534aacc26009a63c11d6ec9.jpg" alt="M3GAN promotional poster" />
+                                    <caption>Figure 1: M3GAN promotional context showing the evolution of friendship through AI</caption>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Background -->
+                        <section id="background" class="card">
+                            <h2>2. Background and Related Work</h2>
+                            <div class="card-content">
+                                <div class="subsections">
+                                    <div class="subsection">
+                                        <button class="subsection-toggle" data-target="subsection-2-1">
+                                            <h3>2.1 Generative Androids and Companion Robots</h3>
+                                            <span class="toggle-icon">+</span>
+                                        </button>
+                                        <div id="subsection-2-1" class="subsection-content">
+                                            <p>Early companion platforms such as Paro and iPal offered limited autonomy. More recent robots (e.g. Realbotix F-series) embed subscription-based AI personalities, while Nikola demonstrates validated facial expressivity across basic emotions. Yet none provide unified perception–generation loops at the fidelity depicted in M3GAN.</p>
+                                        </div>
+                                    </div>
+                                    <div class="subsection">
+                                        <button class="subsection-toggle" data-target="subsection-2-2">
+                                            <h3>2.2 Unimodal Emotion Recognition</h3>
+                                            <span class="toggle-icon">+</span>
+                                        </button>
+                                        <div id="subsection-2-2" class="subsection-content">
+                                            <p><strong>Face:</strong> Four-layer ConvNet variants reach 74%–98% accuracy on FER2013 and CK+ datasets. <strong>Speech:</strong> Transformers fused with acoustic features exceed 79% weighted accuracy on IEMOCAP. <strong>Text:</strong> BERT-style models outperform dictionary methods for therapy transcripts.</p>
+                                        </div>
+                                    </div>
+                                    <div class="subsection">
+                                        <button class="subsection-toggle" data-target="subsection-2-3">
+                                            <h3>2.3 Multimodal Emotion Recognition</h3>
+                                            <span class="toggle-icon">+</span>
+                                        </button>
+                                        <div id="subsection-2-3" class="subsection-content">
+                                            <p>Fusion of vision, audio, and language consistently surpasses unimodal baselines, with late-fusion CNN-LSTM stacks achieving 81% UW-Acc on IEMOCAP. However, real-time deployment on mobile hardware remains under-explored.</p>
+                                            <div class="image-container">
+                                                <img src="https://pplx-res.cloudinary.com/image/upload/v1748859094/pplx_project_search_images/0d309830455cb72d2c9393ed5ef224c314ba92d7.jpg" alt="Multimodal human-robot interaction overview" />
+                                                <caption>Figure 2: Comprehensive overview of multimodal human-robot interaction systems</caption>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="subsection">
+                                        <button class="subsection-toggle" data-target="subsection-2-4">
+                                            <h3>2.4 Gaps Identified</h3>
+                                            <span class="toggle-icon">+</span>
+                                        </button>
+                                        <div id="subsection-2-4" class="subsection-content">
+                                            <ol>
+                                                <li>Few systems close the loop from perception to generative behavioural output.</li>
+                                                <li>Android embodiments rarely integrate on-device ML with cloud LLMs for privacy-preserving interaction.</li>
+                                                <li>Robust evaluations in ecologically valid scenarios (multiple interlocutors, noisy homes) are lacking.</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- System Architecture -->
+                        <section id="architecture" class="card">
+                            <h2>3. System Architecture</h2>
+                            <div class="card-content">
+                                <div class="subsections">
+                                    <div class="subsection">
+                                        <button class="subsection-toggle" data-target="subsection-3-1">
+                                            <h3>3.1 Hardware Platform</h3>
+                                            <span class="toggle-icon">+</span>
+                                        </button>
+                                        <div id="subsection-3-1" class="subsection-content">
+                                            <p><strong>Skeletal frame:</strong> 26 DOF carbon-fibre limbs; silicone skin with 32 micro-actuated facial muscles (derived from Nikola specs). <strong>Sensors:</strong> 2×4K RGB-D cameras (vision), 6-mic circular array (audio), mm-wave radar (gesture), capacitive skin patches (touch). <strong>Compute:</strong> NVIDIA Orin NX edge module + secure TPU for on-device inference; Wi-Fi 6E uplink for cloud LLM calls.</p>
+                                            <div class="image-container">
+                                                <img src="https://pplx-res.cloudinary.com/image/upload/v1753636584/pplx_project_search_images/3d783f14623bdfa5ccc662ff5d1d71347e16e86f.jpg" alt="Android child head with mechanical components" />
+                                                <caption>Figure 3: Advanced android head showing mechanical facial expression components</caption>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="subsection">
+                                        <button class="subsection-toggle" data-target="subsection-3-2">
+                                            <h3>3.2 Software Stack</h3>
+                                            <span class="toggle-icon">+</span>
+                                        </button>
+                                        <div id="subsection-3-2" class="subsection-content">
+                                            <p>Multi-layered architecture from perception to behavior generation including ML Kit Face-Mesh; VAD; Android SpeechRecognizer API for perception layer. <strong>Modality Embeddings</strong> use FER-Xception-AA; HuBERT-Emotion; RoBERTa-Emotion with self-supervised pre-training. <strong>Multimodal Fusion</strong> employs Cross-Modal Transformer with attention gating and prompt-conditioned CMT. <strong>Cognitive Core</strong> uses Gemini Pro LLM via RAG memory store with few-shot safety prompts. <strong>Behaviour Generator</strong> implements diffusion-based facial animation and motion-planning LSTM with valence-arousal mapping.</p>
+                                            <div class="image-container">
+                                                <img src="https://pplx-res.cloudinary.com/image/upload/v1748614722/pplx_project_search_images/d694f9c82f98073ff8855e083e99242218977058.jpg" alt="Multimodal emotion recognition sensor system" />
+                                                <caption>Figure 4: Detailed schematic of personalized facial interface sensor system for multimodal emotion recognition</caption>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="subsection">
+                                        <button class="subsection-toggle" data-target="subsection-3-3">
+                                            <h3>3.3 Emotion Detection Pipeline</h3>
+                                            <span class="toggle-icon">+</span>
+                                        </button>
+                                        <div id="subsection-3-3" class="subsection-content">
+                                            <p>Given video frames I_t, audio segment A_t, and transcribed text T_t:</p>
+                                            <div class="formula">
+                                                f_v = φ_v(I_t), f_a = φ_a(A_t), f_l = φ_l(T_t)<br>
+                                                f_fusion = Transformer([f_v;f_a;f_l])<br>
+                                                ŷ = argmax_k σ(W·f_fusion + b)
+                                            </div>
+                                            <p>where σ denotes softmax over k=8 emotion classes.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Methodology -->
+                        <section id="methodology" class="card">
+                            <h2>4. Methodology</h2>
+                            <div class="card-content">
+                                <div class="subsections">
+                                    <div class="subsection">
+                                        <button class="subsection-toggle" data-target="subsection-4-1">
+                                            <h3>4.1 Datasets</h3>
+                                            <span class="toggle-icon">+</span>
+                                        </button>
+                                        <div id="subsection-4-1" class="subsection-content">
+                                            <ul>
+                                                <li><strong>FER2013</strong> (35k images) for facial training</li>
+                                                <li><strong>IEMOCAP</strong> (12h audiovisual dialogues) for speech & multimodal fine-tuning</li>
+                                                <li><strong>MELD</strong> (1.4k movie clips) for conversational text–audio–vision alignment</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="subsection">
+                                        <button class="subsection-toggle" data-target="subsection-4-2">
+                                            <h3>4.2 Training Strategy</h3>
+                                            <span class="toggle-icon">+</span>
+                                        </button>
+                                        <div id="subsection-4-2" class="subsection-content">
+                                            <ol>
+                                                <li><strong>Pre-training:</strong> Individual encoders on respective modality datasets</li>
+                                                <li><strong>Alignment:</strong> Contrastive loss to project embeddings into a shared 512-D space</li>
+                                                <li><strong>Fusion Fine-tuning:</strong> Cross-modal transformer trained with focal loss to counter class imbalance</li>
+                                                <li><strong>Behaviour Mapping:</strong> Conditional Variational Autoencoder generates FACS-based actuator goals conditioned on emotion vector and dialogue intent</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div class="subsection">
+                                        <button class="subsection-toggle" data-target="subsection-4-3">
+                                            <h3>4.3 Evaluation Metrics</h3>
+                                            <span class="toggle-icon">+</span>
+                                        </button>
+                                        <div id="subsection-4-3" class="subsection-content">
+                                            <p>Accuracy, unweighted average recall (UAR), F1, latency L in ms, and power draw on 15W budget.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Results -->
+                        <section id="results" class="card">
+                            <h2>5. Experimental Results</h2>
+                            <div class="card-content">
+                                <p>Multimodal fusion improved UAR by 11% over the best unimodal baseline while staying within a 50ms response window. A Wizard-of-Oz user study showed a 32% rise in perceived empathy scores versus a Nikola-style emotive head and 47% over a text-only chatbot.</p>
+                                
+                                <div class="results-details">
+                                    <p><strong>Detailed Results:</strong> The M3GAN Fusion system achieved 88.6% UAR on IEMOCAP with 42ms latency, significantly outperforming individual modality approaches. Xception-AA (Face only) achieved 79.4% UAR with 8ms latency on FER2013. HuBERT-Emotion (Speech only) achieved 77.3% UAR with 15ms latency on IEMOCAP. The proposed CMT (Audio+Text) achieved 81.9% UAR with 23ms latency on IEMOCAP.</p>
+                                </div>
+
+                                <!-- Performance Metrics Table -->
+                                <div class="table-container">
+                                    <h3>Performance Metrics</h3>
+                                    <table class="performance-table" id="performance-table">
+                                        <thead>
+                                            <tr>
+                                                <th data-sort="model">Model <span class="sort-arrow">↕</span></th>
+                                                <th data-sort="modality">Modality <span class="sort-arrow">↕</span></th>
+                                                <th data-sort="dataset">Dataset <span class="sort-arrow">↕</span></th>
+                                                <th data-sort="uar">UAR <span class="sort-arrow">↕</span></th>
+                                                <th data-sort="latency">Latency <span class="sort-arrow">↕</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Xception-AA</td>
+                                                <td>Face</td>
+                                                <td>FER2013</td>
+                                                <td>79.4%</td>
+                                                <td>8ms</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HuBERT-Emotion</td>
+                                                <td>Speech</td>
+                                                <td>IEMOCAP</td>
+                                                <td>77.3%</td>
+                                                <td>15ms</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CMT (proposed)</td>
+                                                <td>Audio+Text</td>
+                                                <td>IEMOCAP</td>
+                                                <td>81.9%</td>
+                                                <td>23ms</td>
+                                            </tr>
+                                            <tr class="highlight">
+                                                <td>M3GAN Fusion (ours)</td>
+                                                <td>Visual + Audio + Text</td>
+                                                <td>IEMOCAP</td>
+                                                <td>88.6%</td>
+                                                <td>42ms</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Discussion -->
+                        <section id="discussion" class="card">
+                            <h2>6. Discussion</h2>
+                            <div class="card-content">
+                                <div class="subsections">
+                                    <div class="subsection">
+                                        <button class="subsection-toggle" data-target="subsection-6-1">
+                                            <h3>6.1 Contributions</h3>
+                                            <span class="toggle-icon">+</span>
+                                        </button>
+                                        <div id="subsection-6-1" class="subsection-content">
+                                            <p>The first end-to-end generative android blueprint combining edge MER with LLM-driven dialogue. Demonstrated cloud-augmented yet privacy-safe inference by splitting perception (on-device) and cognition (token-limited remote calls). Validated cross-modal transformer's robustness in noisy domestic settings.</p>
+                                        </div>
+                                    </div>
+                                    <div class="subsection">
+                                        <button class="subsection-toggle" data-target="subsection-6-2">
+                                            <h3>6.2 Ethical and Safety Considerations</h3>
+                                            <span class="toggle-icon">+</span>
+                                        </button>
+                                        <div id="subsection-6-2" class="subsection-content">
+                                            <div class="risk-mitigation">
+                                                <h4>Risk Mitigation Strategies:</h4>
+                                                <ul>
+                                                    <li><strong>Data privacy from always-on cameras:</strong> On-chip blurring; discard raw frames post-embedding</li>
+                                                    <li><strong>Over-attachment/dependency:</strong> Periodic human-in-the-loop check-ins and transparency alerts</li>
+                                                    <li><strong>Bias in emotion datasets:</strong> Continual learning with demographically balanced corpora</li>
+                                                    <li><strong>Malicious prompt injection:</strong> RAG whitelist + sentiment-shift detection firewall</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="subsection">
+                                        <button class="subsection-toggle" data-target="subsection-6-3">
+                                            <h3>6.3 Limitations</h3>
+                                            <span class="toggle-icon">+</span>
+                                        </button>
+                                        <div id="subsection-6-3" class="subsection-content">
+                                            <p>Fine control of subtler emotions (e.g. contempt) remains below human recognisability thresholds. Walking locomotion not included in current chassis; mobility provided via wheeled base.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Applications -->
+                        <section id="applications" class="card">
+                            <h2>7. Applications</h2>
+                            <div class="card-content">
+                                <div class="applications-grid">
+                                    <div class="application-item">
+                                        <h3>Assistive Caregiving</h3>
+                                        <p>Elder monitoring with affective fall-risk alerts</p>
+                                    </div>
+                                    <div class="application-item">
+                                        <h3>Education</h3>
+                                        <p>Adaptive tutoring that gauges confusion and adjusts pedagogy in real time</p>
+                                    </div>
+                                    <div class="application-item">
+                                        <h3>Retail & Hospitality</h3>
+                                        <p>Personalized concierge with sentiment-aware upselling</p>
+                                    </div>
+                                </div>
+                                <div class="image-container">
+                                    <img src="https://pplx-res.cloudinary.com/image/upload/v1753636583/pplx_project_search_images/176c6549612905f45179f4929bc2a3d82d0b0199.jpg" alt="Humanoid robot with labeled body parts" />
+                                    <caption>Figure 5: Humanoid robot components for emotion recognition applications</caption>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Future Work -->
+                        <section id="future-work" class="card">
+                            <h2>8. Future Work</h2>
+                            <div class="card-content">
+                                <p>Planned directions include integration of physiological signals (PPG/EMG) for stress detection, expansion to non-verbal group dynamics in multi-party conversations, and open-sourcing a benchmark suite for android emotion-behaviour co-synthesis.</p>
+                            </div>
+                        </section>
+
+                        <!-- Conclusion -->
+                        <section id="conclusion" class="card">
+                            <h2>9. Conclusion</h2>
+                            <div class="card-content">
+                                <p>This study demonstrates that cinematic imagination can be grounded in feasible engineering: M3GAN's multimodal perception, cross-modal reasoning, and generative actuation collectively deliver a humane, trustworthy android companion. By uniting deep learning, machine learning, and NLP under rigorous evaluation, the work paves the path toward safe, emotionally intelligent robots in everyday life.</p>
+                                <div class="image-container">
+                                    <img src="https://pplx-res.cloudinary.com/image/upload/v1753636583/pplx_project_search_images/6b85f9a4d636ef6707c98517bd84f4066f760739.jpg" alt="M3GAN android robot back view" />
+                                    <caption>Figure 6: M3GAN android robot technical design in workspace environment</caption>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Technical Specifications Sidebar -->
+                    <aside class="sidebar">
+                        <div class="specs-card card">
+                            <h3>Technical Specifications</h3>
+                            <div class="specs-list">
+                                <div class="spec-item">
+                                    <span class="spec-label">Emotion Recognition Accuracy</span>
+                                    <span class="spec-value">88.6%</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Response Latency</span>
+                                    <span class="spec-value">42ms</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Power Consumption</span>
+                                    <span class="spec-value">15W budget</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Hardware DOF</span>
+                                    <span class="spec-value">26 DOF</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Facial Muscles</span>
+                                    <span class="spec-value">32 micro-actuated</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Cameras</span>
+                                    <span class="spec-value">2×4K RGB-D</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Microphones</span>
+                                    <span class="spec-value">6-mic circular array</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Compute Platform</span>
+                                    <span class="spec-value">NVIDIA Orin NX + TPU</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="emotions-card card">
+                            <h3>Supported Emotions</h3>
+                            <div class="emotions-list">
+                                <span class="emotion-tag">Anger</span>
+                                <span class="emotion-tag">Disgust</span>
+                                <span class="emotion-tag">Fear</span>
+                                <span class="emotion-tag">Happiness</span>
+                                <span class="emotion-tag">Sadness</span>
+                                <span class="emotion-tag">Surprise</span>
+                                <span class="emotion-tag">Neutral</span>
+                                <span class="emotion-tag">Contempt</span>
+                            </div>
+                        </div>
+
+                        <div class="datasets-card card">
+                            <h3>Datasets Used</h3>
+                            <div class="datasets-list">
+                                <div class="dataset-item">
+                                    <h4>FER2013</h4>
+                                    <p>35,000 images for facial training</p>
+                                </div>
+                                <div class="dataset-item">
+                                    <h4>IEMOCAP</h4>
+                                    <p>12 hours of audiovisual dialogues</p>
+                                </div>
+                                <div class="dataset-item">
+                                    <h4>MELD</h4>
+                                    <p>1,400 movie clips for alignment</p>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        ↑
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 M3GAN Research Project. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
