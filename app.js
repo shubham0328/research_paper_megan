@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initBackToTop();
     initTableSorting();
     initScrollAnimations();
+    initContactFeatures();
 });
 
 // Mobile Navigation
@@ -75,7 +76,7 @@ function initProgressBar() {
             progressFill.style.width = Math.min(scrollPercent, 100) + '%';
         }
         
-        window.addEventListener('scroll', updateProgress);
+        window.addEventListener('scroll', throttle(updateProgress, 10));
         updateProgress(); // Initial call
     }
 }
@@ -168,7 +169,7 @@ function initBackToTop() {
             }
         }
         
-        window.addEventListener('scroll', updateBackToTopVisibility);
+        window.addEventListener('scroll', throttle(updateBackToTopVisibility, 100));
         updateBackToTopVisibility(); // Initial call
         
         // Scroll to top when clicked
@@ -289,12 +290,79 @@ function getCellValue(row, column) {
     return '';
 }
 
+// Contact Features
+function initContactFeatures() {
+    // Add click tracking for contact links (optional analytics)
+    const contactLinks = document.querySelectorAll('.contact-link');
+    
+    contactLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const linkType = this.href.startsWith('mailto:') ? 'email' : 
+                           this.href.startsWith('tel:') ? 'phone' : 
+                           this.href.includes('linkedin') ? 'linkedin' : 'other';
+            
+            // Optional: Add analytics tracking here
+            console.log(`Contact link clicked: ${linkType}`);
+            
+            // Add visual feedback
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 100);
+        });
+    });
+
+    // Interest tags interaction
+    const interestTags = document.querySelectorAll('.interest-tag');
+    interestTags.forEach(tag => {
+        tag.addEventListener('click', function() {
+            // Add ripple effect
+            const ripple = document.createElement('span');
+            ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(var(--color-primary-rgb), 0.3);
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            `;
+            
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = (rect.width / 2 - size / 2) + 'px';
+            ripple.style.top = (rect.height / 2 - size / 2) + 'px';
+            
+            this.style.position = 'relative';
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                if (ripple.parentNode) {
+                    ripple.parentNode.removeChild(ripple);
+                }
+            }, 600);
+        });
+    });
+
+    // Add CSS for ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
 // Scroll Animations
 function initScrollAnimations() {
     // Check if IntersectionObserver is supported
     if (!('IntersectionObserver' in window)) {
         // Fallback for older browsers
-        const elements = document.querySelectorAll('.card, .application-item');
+        const elements = document.querySelectorAll('.card, .application-item, .contact-item');
         elements.forEach(element => {
             element.style.opacity = '1';
             element.style.transform = 'translateY(0)';
@@ -318,7 +386,7 @@ function initScrollAnimations() {
     }, observerOptions);
     
     // Observe cards and other elements
-    const elementsToAnimate = document.querySelectorAll('.card, .application-item');
+    const elementsToAnimate = document.querySelectorAll('.card, .application-item, .contact-item');
     elementsToAnimate.forEach(element => {
         element.style.opacity = '0';
         element.style.transform = 'translateY(20px)';
@@ -355,7 +423,7 @@ function throttle(func, limit) {
     };
 }
 
-// Keyboard navigation support
+// Enhanced keyboard navigation support
 document.addEventListener('keydown', function(e) {
     // ESC key closes mobile menu
     if (e.key === 'Escape') {
@@ -375,6 +443,12 @@ document.addEventListener('keydown', function(e) {
     
     // Space bar or Enter on subsection toggles
     if ((e.key === ' ' || e.key === 'Enter') && e.target.classList.contains('subsection-toggle')) {
+        e.preventDefault();
+        e.target.click();
+    }
+    
+    // Enter key on interest tags
+    if (e.key === 'Enter' && e.target.classList.contains('interest-tag')) {
         e.preventDefault();
         e.target.click();
     }
@@ -439,6 +513,32 @@ document.addEventListener('error', function(e) {
     }
 }, true);
 
+// Accessibility enhancements
+function enhanceAccessibility() {
+    // Add ARIA labels to interactive elements
+    const contactLinks = document.querySelectorAll('.contact-link');
+    contactLinks.forEach(link => {
+        if (link.href.startsWith('mailto:')) {
+            link.setAttribute('aria-label', `Send email to ${link.textContent}`);
+        } else if (link.href.startsWith('tel:')) {
+            link.setAttribute('aria-label', `Call ${link.textContent}`);
+        } else if (link.href.includes('linkedin')) {
+            link.setAttribute('aria-label', `Visit LinkedIn profile: ${link.textContent}`);
+        }
+    });
+
+    // Add keyboard navigation for interest tags
+    const interestTags = document.querySelectorAll('.interest-tag');
+    interestTags.forEach(tag => {
+        tag.setAttribute('tabindex', '0');
+        tag.setAttribute('role', 'button');
+        tag.setAttribute('aria-label', `Research interest: ${tag.textContent}`);
+    });
+}
+
+// Initialize accessibility enhancements
+document.addEventListener('DOMContentLoaded', enhanceAccessibility);
+
 // Export functions for potential external use
 window.M3GANApp = {
     initMobileNavigation,
@@ -446,5 +546,8 @@ window.M3GANApp = {
     initSmoothScrolling,
     initSubsectionToggles,
     initBackToTop,
-    initTableSorting
+    initTableSorting,
+    initContactFeatures,
+    debounce,
+    throttle
 };
